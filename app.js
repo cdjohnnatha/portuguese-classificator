@@ -34,12 +34,9 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   const errorSerializer = new Error({
     code: err.status || 500,
-    // source: { 'classification': '/classification' },
     detail: err.message
   });
-  // render the error page
   res.status(err.status || 500).send(errorSerializer);
-  // res.render('error');
 });
 
 module.exports = app;

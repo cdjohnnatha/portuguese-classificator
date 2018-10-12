@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "JSON API Existing Blog Post Example Schema",
+  "allOf": [
+    {
+      "$ref": "#/definitions/success"
+    },
+    {
+      "properties": {
+        "data": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/resource"
+            },
+            {
+              "properties": {
+                "attributes": {
+                  "type": "object",
+                  "properties": {
+                    "inputText": { "type": "string" }
+                    }
+                  },
+                "required": ["inputText"],
+                "additionalProperties": false
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+
