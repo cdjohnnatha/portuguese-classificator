@@ -7,6 +7,8 @@ var logger = require('morgan');
 var apiRouter = require('./routes/api/api');
 
 var app = express();
+const { Error } = require('jsonapi-serializer');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,10 +32,14 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  const errorSerializer = new Error({
+    code: err.status || 500,
+    // source: { 'classification': '/classification' },
+    detail: err.message
+  });
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.status(err.status || 500).send(errorSerializer);
+  // res.render('error');
 });
 
 module.exports = app;
