@@ -6,6 +6,7 @@ gets the input and split it in tokens **classified in brazilian portuguese**, li
 * Python3
 * [Nodejs](https://nodejs.org/en/)
 * [Spacy](https://spacy.io/)
+
 **Tutorial of [spacy pt](https://leportella.com/pt-br/2017/11/30/brincando-de-nlp-com-spacy.html)**
 
 ## Paths
